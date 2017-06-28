@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
+
+#TODO: 1. Shift github repo from grassjelly to linorobot
+#      2. Omit checking out to devel branch once devel is merged to master
+
 sudo cp 49-teensy.rules /etc/udev/rules.d/
 
 ROSDISTRO="$(rosversion -d)"
