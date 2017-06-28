@@ -81,7 +81,7 @@ if [ "$SENSOR" == "xv11" || "$3" == "test" ]
         sudo apt-get install -y ros-$ROSDISTRO-xv-11-laser-driver
 fi
 
-if [ "$BASE" == "ackermann" ]
+if [ "$BASE" == "ackermann" || "$3" == "test" ]
     then
         sudo apt-get install -y ros-$ROSDISTRO-teb-local-planner
 fi

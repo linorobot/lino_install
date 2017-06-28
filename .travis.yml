@@ -1,0 +1,30 @@
+sudo: required
+dist: trusty
+language: generic
+
+compiler:
+  - gcc
+
+install:
+  - export ROSDISTRO=indigo
+  - sudo apt-get update
+  - sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu trusty main" > /etc/apt/sources.list.d/ros-latest.list'
+  - wget http://packages.ros.org/ros.key -O - | sudo apt-key add -
+  - sudo apt-get update
+  - sudo apt-get -y install ros-$ROSDISTRO-ros-base
+  - sudo apt-get install python-rosdep -y
+  - sudo `which rosdep` init
+  - rosdep update
+  - rosdep install --default-yes --from-paths . --ignore-src --rosdistro $ROSDISTRO
+  - source /opt/ros/indigo/setup.bash
+  - export PYTHONPATH=$PYTHONPATH:/usr/lib/python2.7/dist-packages
+
+script: 
+  - cd
+  - git clone https://github.com/linorobot/lino_install
+  - cd lino_install
+  - ./install 2wd xv11 test
+
+notifications:
+  email:
+    - jimenojmm@gmail.com
