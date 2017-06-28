@@ -96,6 +96,8 @@ cd ~/linorobot_ws
 catkin_make
 
 echo "source ~/linorobot_ws/devel/setup.bash" >> ~/.bashrc
+echo "export LINOLIDAR=$SENSOR" >> ~/.bashrc
+echo "export LINOBASE=$BASE" >> ~/.bashrc
 source ~/.bashrc
 
 cd src
