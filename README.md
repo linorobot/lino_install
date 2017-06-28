@@ -1,7 +1,6 @@
-### lino_install   [![Build Status](https://travis-ci.org/linorobot/lino_install.svg?branch=master)](https://travis-ci.org/linorobot/lino_install)
-- - - -
+## lino_install   [![Build Status](https://travis-ci.org/linorobot/lino_install.svg?branch=master)](https://travis-ci.org/linorobot/lino_install)
 
-## Installation:
+### Installation:
 
 This will install all the files you need to build an autonomous robot including:
 - Teensy Firmware
