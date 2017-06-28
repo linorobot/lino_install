@@ -3,7 +3,7 @@
 #TODO: 1. Shift github repo from grassjelly to linorobot
 #      2. Omit checking out to devel branch once devel is merged to master
 
-sudo cp 49-teensy.rules /etc/udev/rules.d/
+sudo cp files/49-teensy.rules /etc/udev/rules.d/
 
 ROSDISTRO="$(rosversion -d)"
 BASE=$1
@@ -80,12 +80,12 @@ sudo apt-get install -y ros-$ROSDISTRO-gmapping
 sudo apt-get install -y ros-$ROSDISTRO-map-server
 sudo apt-get install -y ros-$ROSDISTRO-navigation
 
-if [ "$SENSOR" == "xv11" || "$3" == "test" ]
+if [[ "$SENSOR" == "xv11" || "$3" == "test" ]]
     then
         sudo apt-get install -y ros-$ROSDISTRO-xv-11-laser-driver
 fi
 
-if [ "$BASE" == "ackermann" || "$3" == "test" ]
+if [[ "$BASE" == "ackermann" || "$3" == "test" ]]
     then
         sudo apt-get install -y ros-$ROSDISTRO-teb-local-planner
 fi
@@ -109,7 +109,7 @@ git clone https://github.com/linorobot/lino_pid.git
 git clone https://github.com/grassjelly/linorobot.git
 git clone https://github.com/linorobot/imu_calib.git
 
-if [ "$SENSOR" == "rplidar" || "$3" == "test" ]
+if [[ "$SENSOR" == "rplidar" || "$3" == "test" ]]
     then
         https://github.com/robopeak/rplidar_ros.git
 fi
