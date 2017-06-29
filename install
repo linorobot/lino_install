@@ -117,7 +117,7 @@ if [[ "$SENSOR" == "rplidar" || "$3" == "test" ]]
 fi
 
 cd linorobot
-TRAVIS_BRANCH="echo $(TRAVIS_BRANCH)"
+TRAVIS_BRANCH="echo $TRAVIS_BRANCH"
 if [ "$TRAVIS_BRANCH" = "devel" ]; then git checkout devel; fi
 git checkout devel
 
