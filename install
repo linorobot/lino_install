@@ -113,7 +113,7 @@ git clone https://github.com/linorobot/imu_calib.git
 
 if [[ "$SENSOR" == "rplidar" || "$3" == "test" ]]
     then
-        https://github.com/robopeak/rplidar_ros.git
+        git clone https://github.com/robopeak/rplidar_ros.git
 fi
 
 cd linorobot
