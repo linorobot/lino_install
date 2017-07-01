@@ -110,6 +110,7 @@ cd src
 git clone https://github.com/linorobot/lino_pid.git
 git clone https://github.com/grassjelly/linorobot.git
 git clone https://github.com/linorobot/imu_calib.git
+git clone https://github.com/linorobot/lino_udev.git
 
 if [[ "$SENSOR" == "rplidar" || "$3" == "test" ]]
     then
