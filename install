@@ -75,6 +75,8 @@ sudo easy_install pip
 sudo pip install -U platformio
 sudo rm -rf ~/.platformio/
 
+source /opt/ros/$ROSDISTRO/setup.bash
+
 sudo apt-get install -y ros-$ROSDISTRO-roslint
 sudo apt-get install -y ros-$ROSDISTRO-rosserial
 sudo apt-get install -y ros-$ROSDISTRO-imu-filter-madgwick
