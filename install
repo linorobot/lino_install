@@ -87,6 +87,11 @@ sudo apt-get install -y ros-$ROSDISTRO-navigation
 if [[ "$SENSOR" == "xv11" || "$3" == "test" ]]
     then
         sudo apt-get install -y ros-$ROSDISTRO-xv-11-laser-driver
+        
+elif [[ "$SENSOR" == "kinect" || "$3" == "test" ]]
+    then
+        sudo apt-get install -y ros-$ROSDISTRO-freenect-launch
+        sudo apt-get install -y ros-$ROSDISTRO-depthimage-to-laserscan
 fi
 
 if [[ "$BASE" == "ackermann" || "$3" == "test" ]]
