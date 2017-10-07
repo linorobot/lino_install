@@ -94,7 +94,7 @@ if [[ "$SENSOR" == "xv11" || "$3" == "test" ]]
 elif [[ "$SENSOR" == "kinect" || "$3" == "test" ]]
     then
         sudo apt-get install -y ros-$ROSDISTRO-freenect-launch
-        sudo apt-get install -y ros-$ROSDISTRO-pointcloud_to_laserscan
+        sudo apt-get install -y ros-$ROSDISTRO-depthimage-to-laserscan
 
 elif [[ "$SENSOR" == "realsense" || "$3" == "test" ]]
     then
