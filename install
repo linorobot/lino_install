@@ -89,6 +89,7 @@ source /opt/ros/$ROSDISTRO/setup.bash
 
 sudo apt-get install -y ros-$ROSDISTRO-roslint
 sudo apt-get install -y ros-$ROSDISTRO-rosserial
+sudo apt-get install -y ros-$ROSDISTRO-rosserial-arduino
 sudo apt-get install -y ros-$ROSDISTRO-imu-filter-madgwick
 sudo apt-get install -y ros-$ROSDISTRO-gmapping
 sudo apt-get install -y ros-$ROSDISTRO-map-server
@@ -144,6 +145,11 @@ TRAVIS_BRANCH="echo $TRAVIS_BRANCH"
 if [ "$TRAVIS_BRANCH" = "devel" ]; then git checkout devel; fi
 
 cd teensy/firmware
+
+rm -rf lib/ros_lib/lino_msgs
+rosrun rosserial_arduino make_libraries.py /tmp
+cp -r /tmp/ros_lib/lino_msgs/ lib/ros_lib/
+
 export PLATFORMIO_CI_SRC=$PWD/src/firmware.ino
 platformio ci --project-conf=./platformio.ini --lib="./lib/ros_lib" --lib="./lib/config"  --lib="./lib/motor"  --lib="./lib/kinematics"  --lib="./lib/pid"  --lib="./lib/imu"
 
