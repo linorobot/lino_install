@@ -91,8 +91,9 @@ cd $HOME
 mkdir -p linorobot_ws/src
 cd $HOME/linorobot_ws/src
 catkin_init_workspace
+git clone https://github.com/linorobot/lino_msgs.git
 
-cd $HOME/linorobot_ws
+cd $HOME/linorobot_ws/
 catkin_make
 source devel/setup.bash
 
@@ -143,10 +144,9 @@ else
 fi
 
 cd $HOME/linorobot_ws/src
-git clone https://github.com/linorobot/lino_msgs.git
-git clone https://github.com/linorobot/lino_pid.git
 git clone https://github.com/linorobot/linorobot.git
 git clone https://github.com/linorobot/imu_calib.git
+git clone https://github.com/linorobot/lino_pid.git
 git clone https://github.com/linorobot/lino_udev.git
 
 cd $HOME/linorobot_ws
