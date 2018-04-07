@@ -95,37 +95,35 @@ sudo apt-get install -y ros-$ROSDISTRO-gmapping
 sudo apt-get install -y ros-$ROSDISTRO-map-server
 sudo apt-get install -y ros-$ROSDISTRO-navigation
 
-if [[ "$SENSOR" == "xv11" ]]
-    then
-        sudo apt-get install -y ros-$ROSDISTRO-xv-11-laser-driver
-        
-elif [[ "$SENSOR" == "kinect" ]]
-    then
-        sudo apt-get install -y ros-$ROSDISTRO-freenect-launch
-        sudo apt-get install -y ros-$ROSDISTRO-depthimage-to-laserscan
-
-elif [[ "$SENSOR" == "realsense" ]]
-    then
-        sudo apt-get install -y ros-$ROSDISTRO-realsense-camera
-        sudo apt-get install -y ros-$ROSDISTRO-depthimage-to-laserscan
-fi
-
-if [[ "$BASE" == "ackermann" ]]
-    then
-        sudo apt-get install -y ros-$ROSDISTRO-teb-local-planner
-fi
-
 if [[ "$3" == "test" ]]
     then
-        sudo apt-get install -y ros-$ROSDISTRO-teb-local-planner
         sudo apt-get install -y ros-$ROSDISTRO-xv-11-laser-driver
         sudo apt-get install -y ros-$ROSDISTRO-freenect-launch
-        sudo apt-get install -y ros-$ROSDISTRO-depthimage-to-laserscan
         sudo apt-get install -y ros-$ROSDISTRO-realsense-camera
         sudo apt-get install -y ros-$ROSDISTRO-depthimage-to-laserscan
         sudo apt-get install -y ros-$ROSDISTRO-teb-local-planner
-fi
 
+else
+    if [[ "$SENSOR" == "xv11" ]]
+        then
+            sudo apt-get install -y ros-$ROSDISTRO-xv-11-laser-driver
+            
+    elif [[ "$SENSOR" == "kinect" ]]
+        then
+            sudo apt-get install -y ros-$ROSDISTRO-freenect-launch
+            sudo apt-get install -y ros-$ROSDISTRO-depthimage-to-laserscan
+
+    elif [[ "$SENSOR" == "realsense" ]]
+        then
+            sudo apt-get install -y ros-$ROSDISTRO-realsense-camera
+            sudo apt-get install -y ros-$ROSDISTRO-depthimage-to-laserscan
+    fi
+
+    if [[ "$BASE" == "ackermann" ]]
+        then
+            sudo apt-get install -y ros-$ROSDISTRO-teb-local-planner
+    fi
+fi
 
 cd 
 mkdir -p linorobot_ws/src
@@ -158,6 +156,7 @@ TRAVIS_BRANCH="echo $TRAVIS_BRANCH"
 if [ "$TRAVIS_BRANCH" = "devel" ]; then git checkout devel; fi
 
 cd teensy/firmware
+
 rm -rf lib/ros_lib/lino_msgs
 rosrun rosserial_arduino make_libraries.py /tmp
 cp -r /tmp/ros_lib/lino_msgs/ lib/ros_lib/
