@@ -87,6 +87,15 @@ sudo rm -rf $HOME/.platformio/
 
 source /opt/ros/$ROSDISTRO/setup.bash
 
+cd $HOME
+mkdir -p linorobot_ws/src
+cd $HOME/linorobot_ws/src
+catkin_init_workspace
+
+cd $HOME/linorobot_ws
+catkin_make
+source devel/setup.bash
+
 sudo apt-get install -y ros-$ROSDISTRO-roslint
 sudo apt-get install -y ros-$ROSDISTRO-rosserial
 sudo apt-get install -y ros-$ROSDISTRO-rosserial-arduino
@@ -103,6 +112,9 @@ if [[ "$3" == "test" ]]
         sudo apt-get install -y ros-$ROSDISTRO-depthimage-to-laserscan
         sudo apt-get install -y ros-$ROSDISTRO-teb-local-planner
 
+        cd $HOME/linorobot_ws/src
+        git clone https://github.com/robopeak/rplidar_ros.git
+
 else
     if [[ "$SENSOR" == "xv11" ]]
         then
@@ -112,6 +124,11 @@ else
         then
             sudo apt-get install -y ros-$ROSDISTRO-freenect-launch
             sudo apt-get install -y ros-$ROSDISTRO-depthimage-to-laserscan
+
+    elif [[ "$SENSOR" == "rplidar" ]]
+        then
+            cd $HOME/linorobot_ws/src
+            git clone https://github.com/robopeak/rplidar_ros.git
 
     elif [[ "$SENSOR" == "realsense" ]]
         then
@@ -125,47 +142,32 @@ else
     fi
 fi
 
-cd 
-mkdir -p linorobot_ws/src
-cd linorobot_ws/src
-catkin_init_workspace
-
+cd $HOME/linorobot_ws/src
 git clone https://github.com/linorobot/lino_msgs.git
-cd $HOME/linorobot_ws
-catkin_make
-source devel/setup.bash
-
-echo "source $HOME/linorobot_ws/devel/setup.bash" >> $HOME/.bashrc
-echo "export LINOLIDAR=$SENSOR" >> $HOME/.bashrc
-echo "export LINOBASE=$BASE" >> $HOME/.bashrc
-source $HOME/.bashrc
-
-cd src
 git clone https://github.com/linorobot/lino_pid.git
 git clone https://github.com/linorobot/linorobot.git
 git clone https://github.com/linorobot/imu_calib.git
 git clone https://github.com/linorobot/lino_udev.git
 
-if [[ "$SENSOR" == "rplidar" ]]
-    then
-        git clone https://github.com/robopeak/rplidar_ros.git
-fi
-
-cd linorobot
+cd $HOME/linorobot_ws/src/linorobot
 TRAVIS_BRANCH="echo $TRAVIS_BRANCH"
 if [ "$TRAVIS_BRANCH" = "devel" ]; then git checkout devel; fi
 
-cd teensy/firmware
-
-rm -rf lib/ros_lib/lino_msgs
+rm -rf $HOME/linorobot_ws/src/linorobot/teensy/firmware/lib/ros_lib/lino_msgs
 rosrun rosserial_arduino make_libraries.py /tmp
-cp -r /tmp/ros_lib/lino_msgs/ lib/ros_lib/
+cp -r /tmp/ros_lib/lino_msgs/ $HOME/linorobot_ws/src/linorobot/teensy/firmware/lib/ros_lib/
 
+$HOME/linorobot_ws/src/linorobot/teensy/firmware
 export PLATFORMIO_CI_SRC=$PWD/src/firmware.ino
 platformio ci --project-conf=./platformio.ini --lib="./lib/ros_lib" --lib="./lib/config"  --lib="./lib/motor"  --lib="./lib/kinematics"  --lib="./lib/pid"  --lib="./lib/imu"
 
 cd $HOME/linorobot_ws
 catkin_make
+
+echo "source $HOME/linorobot_ws/devel/setup.bash" >> $HOME/.bashrc
+echo "export LINOLIDAR=$SENSOR" >> $HOME/.bashrc
+echo "export LINOBASE=$BASE" >> $HOME/.bashrc
+source $HOME/.bashrc
 
 echo
 echo "INSTALLATION DONE!"
