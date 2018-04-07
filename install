@@ -83,7 +83,7 @@ sudo apt-get install -y python-gudev
 
 sudo easy_install pip
 sudo pip install -U platformio
-sudo rm -rf ~/.platformio/
+sudo rm -rf $HOME/.platformio/
 
 source /opt/ros/$ROSDISTRO/setup.bash
 
@@ -95,25 +95,37 @@ sudo apt-get install -y ros-$ROSDISTRO-gmapping
 sudo apt-get install -y ros-$ROSDISTRO-map-server
 sudo apt-get install -y ros-$ROSDISTRO-navigation
 
-if [[ "$SENSOR" == "xv11" || "$3" == "test" ]]
+if [[ "$SENSOR" == "xv11" ]]
     then
         sudo apt-get install -y ros-$ROSDISTRO-xv-11-laser-driver
         
-elif [[ "$SENSOR" == "kinect" || "$3" == "test" ]]
+elif [[ "$SENSOR" == "kinect" ]]
     then
         sudo apt-get install -y ros-$ROSDISTRO-freenect-launch
         sudo apt-get install -y ros-$ROSDISTRO-depthimage-to-laserscan
 
-elif [[ "$SENSOR" == "realsense" || "$3" == "test" ]]
+elif [[ "$SENSOR" == "realsense" ]]
     then
         sudo apt-get install -y ros-$ROSDISTRO-realsense-camera
         sudo apt-get install -y ros-$ROSDISTRO-depthimage-to-laserscan
 fi
 
-if [[ "$BASE" == "ackermann" || "$3" == "test" ]]
+if [[ "$BASE" == "ackermann" ]]
     then
         sudo apt-get install -y ros-$ROSDISTRO-teb-local-planner
 fi
+
+if [[ "$3" == "test" ]]
+    then
+        sudo apt-get install -y ros-$ROSDISTRO-teb-local-planner
+        sudo apt-get install -y ros-$ROSDISTRO-xv-11-laser-driver
+        sudo apt-get install -y ros-$ROSDISTRO-freenect-launch
+        sudo apt-get install -y ros-$ROSDISTRO-depthimage-to-laserscan
+        sudo apt-get install -y ros-$ROSDISTRO-realsense-camera
+        sudo apt-get install -y ros-$ROSDISTRO-depthimage-to-laserscan
+        sudo apt-get install -y ros-$ROSDISTRO-teb-local-planner
+fi
+
 
 cd 
 mkdir -p linorobot_ws/src
@@ -121,14 +133,14 @@ cd linorobot_ws/src
 catkin_init_workspace
 
 git clone https://github.com/linorobot/lino_msgs.git
-cd ~/linorobot_ws
+cd $HOME/linorobot_ws
 catkin_make
 source devel/setup.bash
 
-echo "source ~/linorobot_ws/devel/setup.bash" >> ~/.bashrc
-echo "export LINOLIDAR=$SENSOR" >> ~/.bashrc
-echo "export LINOBASE=$BASE" >> ~/.bashrc
-source ~/.bashrc
+echo "source $HOME/linorobot_ws/devel/setup.bash" >> $HOME/.bashrc
+echo "export LINOLIDAR=$SENSOR" >> $HOME/.bashrc
+echo "export LINOBASE=$BASE" >> $HOME/.bashrc
+source $HOME/.bashrc
 
 cd src
 git clone https://github.com/linorobot/lino_pid.git
@@ -136,7 +148,7 @@ git clone https://github.com/linorobot/linorobot.git
 git clone https://github.com/linorobot/imu_calib.git
 git clone https://github.com/linorobot/lino_udev.git
 
-if [[ "$SENSOR" == "rplidar" || "$3" == "test" ]]
+if [[ "$SENSOR" == "rplidar" ]]
     then
         git clone https://github.com/robopeak/rplidar_ros.git
 fi
@@ -153,7 +165,7 @@ cp -r /tmp/ros_lib/lino_msgs/ lib/ros_lib/
 export PLATFORMIO_CI_SRC=$PWD/src/firmware.ino
 platformio ci --project-conf=./platformio.ini --lib="./lib/ros_lib" --lib="./lib/config"  --lib="./lib/motor"  --lib="./lib/kinematics"  --lib="./lib/pid"  --lib="./lib/imu"
 
-cd ~/linorobot_ws
+cd $HOME/linorobot_ws
 catkin_make
 
 echo
