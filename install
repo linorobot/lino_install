@@ -149,6 +149,9 @@ git clone https://github.com/linorobot/linorobot.git
 git clone https://github.com/linorobot/imu_calib.git
 git clone https://github.com/linorobot/lino_udev.git
 
+cd $HOME/linorobot_ws
+catkin_make
+
 cd $HOME/linorobot_ws/src/linorobot
 TRAVIS_BRANCH="echo $TRAVIS_BRANCH"
 if [ "$TRAVIS_BRANCH" = "devel" ]; then git checkout devel; fi
@@ -157,12 +160,9 @@ rm -rf $HOME/linorobot_ws/src/linorobot/teensy/firmware/lib/ros_lib/lino_msgs
 rosrun rosserial_arduino make_libraries.py /tmp
 cp -r /tmp/ros_lib/lino_msgs/ $HOME/linorobot_ws/src/linorobot/teensy/firmware/lib/ros_lib/
 
-$HOME/linorobot_ws/src/linorobot/teensy/firmware
+cd $HOME/linorobot_ws/src/linorobot/teensy/firmware
 export PLATFORMIO_CI_SRC=$PWD/src/firmware.ino
 platformio ci --project-conf=./platformio.ini --lib="./lib/ros_lib" --lib="./lib/config"  --lib="./lib/motor"  --lib="./lib/kinematics"  --lib="./lib/pid"  --lib="./lib/imu"
-
-cd $HOME/linorobot_ws
-catkin_make
 
 echo "source $HOME/linorobot_ws/devel/setup.bash" >> $HOME/.bashrc
 echo "export LINOLIDAR=$SENSOR" >> $HOME/.bashrc
