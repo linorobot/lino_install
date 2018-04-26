@@ -117,16 +117,18 @@ if [[ "$3" == "test" ]]
         git clone https://github.com/robopeak/rplidar_ros.git
 
         #TEST D415
-        echo 'deb http://realsense-hw-public.s3.amazonaws.com/Debian/apt-repo xenial main' | sudo tee /etc/apt/sources.list.d/realsense-public.list
-        sudo apt-key adv --keyserver keys.gnupg.net --recv-key 6F3EFCDE
-        sudo apt-get update
-        sudo apt-get install librealsense2-dkms
-        sudo apt-get install librealsense2-utils
-        sudo apt-get install librealsense2-dev
-        sudo apt-get install librealsense2-dbg
+        # echo 'deb http://realsense-hw-public.s3.amazonaws.com/Debian/apt-repo xenial main' | sudo tee /etc/apt/sources.list.d/realsense-public.list
+        # sudo apt-key adv --keyserver keys.gnupg.net --recv-key 6F3EFCDE
+        # sudo apt-get update
+        # sudo apt-get install librealsense2-dkms
+        # sudo apt-get install librealsense2-utils
+        # sudo apt-get install librealsense2-dev
+        # sudo apt-get install librealsense2-dbg
 
-        wget -O d415.tar https://github.com/intel-ros/realsense/archive/2.0.3.tar.gz
-        tar -xvzf d415.tar
+        # wget -O d415.tar https://github.com/intel-ros/realsense/archive/2.0.3.tar.gz
+        # tar -xvzf d415.tar
+        sudo apt-get install -y ros-$ROSDISTRO-realsense2-camera
+
 
 else
     if [[ "$SENSOR" == "xv11" ]]
