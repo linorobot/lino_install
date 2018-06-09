@@ -149,9 +149,6 @@ git clone https://github.com/linorobot/imu_calib.git
 git clone https://github.com/linorobot/lino_pid.git
 git clone https://github.com/linorobot/lino_udev.git
 
-cd $HOME/linorobot_ws
-catkin_make
-
 cd $HOME/linorobot_ws/src/linorobot
 TRAVIS_BRANCH="echo $TRAVIS_BRANCH"
 if [ "$TRAVIS_BRANCH" = "devel" ]; then git checkout devel; fi
@@ -168,6 +165,9 @@ echo "source $HOME/linorobot_ws/devel/setup.bash" >> $HOME/.bashrc
 echo "export LINOLIDAR=$SENSOR" >> $HOME/.bashrc
 echo "export LINOBASE=$BASE" >> $HOME/.bashrc
 source $HOME/.bashrc
+
+cd $HOME/linorobot_ws
+catkin_make
 
 echo
 echo "INSTALLATION DONE!"
