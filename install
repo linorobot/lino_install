@@ -159,7 +159,7 @@ cp -r /tmp/ros_lib/lino_msgs/ $HOME/linorobot_ws/src/linorobot/teensy/firmware/l
 
 cd $HOME/linorobot_ws/src/linorobot/teensy/firmware
 export PLATFORMIO_CI_SRC=$PWD/src/firmware.ino
-platformio ci --project-conf=./platformio.ini --lib="./lib/ros_lib" --lib="./lib/config"  --lib="./lib/motor"  --lib="./lib/kinematics"  --lib="./lib/pid"  --lib="./lib/imu"
+platformio ci --project-conf=./platformio.ini --lib="./lib/ros_lib" --lib="./lib/config"  --lib="./lib/motor"  --lib="./lib/kinematics"  --lib="./lib/pid"  --lib="./lib/imu" --lib="./lib/encoder"
 
 echo "source $HOME/linorobot_ws/devel/setup.bash" >> $HOME/.bashrc
 echo "export LINOLIDAR=$SENSOR" >> $HOME/.bashrc
