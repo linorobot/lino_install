@@ -104,6 +104,7 @@ sudo apt-get install -y ros-$ROSDISTRO-imu-filter-madgwick
 sudo apt-get install -y ros-$ROSDISTRO-gmapping
 sudo apt-get install -y ros-$ROSDISTRO-map-server
 sudo apt-get install -y ros-$ROSDISTRO-navigation
+sudo apt-get install -y ros-$ROSDISTRO-robot-localization
 
 if [[ "$3" == "test" ]]
     then
