@@ -110,13 +110,13 @@ sudo apt-get install -y ros-$ROSDISTRO-robot-localization
 if [[ "$3" == "test" ]]
     then
         sudo apt-get install -y ros-$ROSDISTRO-xv-11-laser-driver
+        sudo apt-get install -y ros-$ROSDISTRO-rplidar-ros
         sudo apt-get install -y ros-$ROSDISTRO-freenect-launch
         sudo apt-get install -y ros-$ROSDISTRO-realsense-camera
         sudo apt-get install -y ros-$ROSDISTRO-depthimage-to-laserscan
         sudo apt-get install -y ros-$ROSDISTRO-teb-local-planner
 
         cd $HOME/linorobot_ws/src
-        git clone https://github.com/robopeak/rplidar_ros.git
         git clone https://github.com/EAIBOT/ydlidar.git
 
 else
@@ -126,8 +126,7 @@ else
 
     elif [[ "$SENSOR" == "rplidar" ]]
         then
-            cd $HOME/linorobot_ws/src
-            git clone https://github.com/robopeak/rplidar_ros.git
+            sudo apt-get install -y ros-$ROSDISTRO-rplidar-ros
 
     elif [[ "$SENSOR" == "ydlidar" ]]
         then
