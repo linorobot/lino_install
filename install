@@ -40,7 +40,7 @@ if [ "$3" != "test" ]
                 echo
                 exit 1
 
-        elif [[ "$2" != "xv11" && "$2" != "rplidar" && "$2" != "ydlidar" && "$2" != "kinect" && "$2" != "realsense" ]]
+        elif [[ "$2" != "xv11" && "$2" != "rplidar" && "$2" != "ydlidar" && "$2" != "hokuyo" && "$2" != "kinect" && "$2" != "realsense" ]]
             then
                 echo "Invalid linorobot base: $2"
                 echo
@@ -48,6 +48,7 @@ if [ "$3" != "test" ]
                 echo "xv11"
                 echo "rplidar"
                 echo "ydlidar"
+                echo "hokuyo"
                 echo "kinect"
                 echo "realsense"
                 echo
