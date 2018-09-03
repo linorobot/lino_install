@@ -26,5 +26,5 @@ The lidar you're going to use for your build. Valid arguments are
 - hokuyo
 - kinect
 - realsense
- 
 
+:exclamation: Do note that for hokuyo lidar, you will be prompted for the IP address

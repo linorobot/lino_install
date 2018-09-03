@@ -126,6 +126,13 @@ else
     elif [[ "$SENSOR" == "hokuyo" ]]
         then
             sudo apt-get install -y ros-$ROSDISTRO-urg-node
+						hokuyoip=
+						while [ -z $hokuyoip ]
+						do
+							echo -n 'Input your hokuyo IP: '
+							read hokuyoip
+							echo "export LIDARIP=$hokuyoip" >> $HOME/.bashrc
+						done
 
     elif [[ "$SENSOR" == "kinect" ]]
         then
