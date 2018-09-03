@@ -42,7 +42,7 @@ if [ "$3" != "test" ]
 
         elif [[ "$2" != "xv11" && "$2" != "rplidar" && "$2" != "ydlidar" && "$2" != "hokuyo" && "$2" != "kinect" && "$2" != "realsense" ]]
             then
-                echo "Invalid linorobot base: $2"
+                echo "Invalid linorobot sensor: $2"
                 echo
                 echo "Valid Options:"
                 echo "xv11"
@@ -76,12 +76,7 @@ echo "INSTALLING NOW...."
 echo
 
 sudo apt-get update
-sudo apt-get install -y avahi-daemon
-sudo apt-get install -y openssh-server
-sudo apt-get install -y python-setuptools 
-sudo apt-get install -y python-dev 
-sudo apt-get install -y build-essential
-sudo apt-get install -y python-gudev
+sudo apt-get install -y avahi-daemon openssh-server python-setuptools python-dev build-essential python-gudev
 
 sudo easy_install pip
 sudo pip install -U platformio
@@ -99,14 +94,7 @@ cd $HOME/linorobot_ws/
 catkin_make
 source devel/setup.bash
 
-sudo apt-get install -y ros-$ROSDISTRO-roslint
-sudo apt-get install -y ros-$ROSDISTRO-rosserial
-sudo apt-get install -y ros-$ROSDISTRO-rosserial-arduino
-sudo apt-get install -y ros-$ROSDISTRO-imu-filter-madgwick
-sudo apt-get install -y ros-$ROSDISTRO-gmapping
-sudo apt-get install -y ros-$ROSDISTRO-map-server
-sudo apt-get install -y ros-$ROSDISTRO-navigation
-sudo apt-get install -y ros-$ROSDISTRO-robot-localization
+sudo apt-get install -y ros-$ROSDISTRO-roslint ros-$ROSDISTRO-rosserial ros-$ROSDISTRO-rosserial-arduino ros-$ROSDISTRO-imu-filter-madgwick ros-$ROSDISTRO-gmapping ros-$ROSDISTRO-map-server ros-$ROSDISTRO-navigation ros-$ROSDISTRO-robot-localization
 
 if [[ "$3" == "test" ]]
     then
