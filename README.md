@@ -11,14 +11,14 @@ You need to pass two arguments to the install file, where:
 $ ./install <base> <sensor>
 ```
 
-##### Base 
+##### base 
 The type of robot you want to build. Valid arguments are 
 - 2wd
 - 4wd
 - ackermann
 - mecanum
 
-##### Sensor 
+##### sensor 
 The lidar you're going to use for your build. Valid arguments are 
 - xv11
 - rplidar
@@ -27,4 +27,4 @@ The lidar you're going to use for your build. Valid arguments are
 - kinect
 - realsense
 
-:exclamation: Do note that for hokuyo lidar, you will be prompted for the IP address
+:exclamation: Do note that for hokuyo lidar, you will be prompted for the IP address (Default: 192.168.0.10)

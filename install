@@ -76,7 +76,13 @@ echo "INSTALLING NOW...."
 echo
 
 sudo apt-get update
-sudo apt-get install -y avahi-daemon openssh-server python-setuptools python-dev build-essential python-gudev
+sudo apt-get install -y \
+avahi-daemon \
+openssh-server \
+python-setuptools \
+python-dev \
+build-essential \
+python-gudev
 
 sudo easy_install pip
 sudo python2.7 -m pip install -U platformio
@@ -94,17 +100,26 @@ cd $HOME/linorobot_ws/
 catkin_make
 source devel/setup.bash
 
-sudo apt-get install -y ros-$ROSDISTRO-roslint ros-$ROSDISTRO-rosserial ros-$ROSDISTRO-rosserial-arduino ros-$ROSDISTRO-imu-filter-madgwick ros-$ROSDISTRO-gmapping ros-$ROSDISTRO-map-server ros-$ROSDISTRO-navigation ros-$ROSDISTRO-robot-localization
+sudo apt-get install -y \
+ros-$ROSDISTRO-roslint \
+ros-$ROSDISTRO-rosserial \
+ros-$ROSDISTRO-rosserial-arduino \
+ros-$ROSDISTRO-imu-filter-madgwick \
+ros-$ROSDISTRO-gmapping \
+ros-$ROSDISTRO-map-server \
+ros-$ROSDISTRO-navigation \
+ros-$ROSDISTRO-robot-localization
 
 if [[ "$3" == "test" ]]
     then
-        sudo apt-get install -y ros-$ROSDISTRO-xv-11-laser-driver
-        sudo apt-get install -y ros-$ROSDISTRO-rplidar-ros
-        sudo apt-get install -y ros-$ROSDISTRO-urg-node        
-        sudo apt-get install -y ros-$ROSDISTRO-freenect-launch
-        sudo apt-get install -y ros-$ROSDISTRO-realsense-camera
-        sudo apt-get install -y ros-$ROSDISTRO-depthimage-to-laserscan
-        sudo apt-get install -y ros-$ROSDISTRO-teb-local-planner
+        sudo apt-get install -y \
+        ros-$ROSDISTRO-xv-11-laser-driver \
+        ros-$ROSDISTRO-rplidar-ros \
+        ros-$ROSDISTRO-urg-node \        
+        ros-$ROSDISTRO-freenect-launch \
+        ros-$ROSDISTRO-realsense-camera \
+        ros-$ROSDISTRO-depthimage-to-laserscan \
+        ros-$ROSDISTRO-teb-local-planner 
 
         cd $HOME/linorobot_ws/src
         git clone https://github.com/EAIBOT/ydlidar.git
@@ -126,13 +141,13 @@ else
     elif [[ "$SENSOR" == "hokuyo" ]]
         then
             sudo apt-get install -y ros-$ROSDISTRO-urg-node
-						hokuyoip=
-						while [ -z $hokuyoip ]
-						do
-							echo -n 'Input your hokuyo IP: '
-							read hokuyoip
-							echo "export LIDARIP=$hokuyoip" >> $HOME/.bashrc
-						done
+            hokuyoip=
+            while [ -z $hokuyoip ]
+            do
+                echo -n 'Input your hokuyo IP (Default 192.168.0.10): '
+                read hokuyoip
+                echo "export LIDARIP=$hokuyoip" >> $HOME/.bashrc
+            done
 
     elif [[ "$SENSOR" == "kinect" ]]
         then
