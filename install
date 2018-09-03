@@ -143,7 +143,7 @@ else
             sudo apt-get install -y ros-$ROSDISTRO-urg-node
             hokuyoip=
             echo ""
-            echo -n "Input your hokuyo IP (Default 192.168.0.10): "
+            echo -n "Input your hokuyo IP (Default 192.168.0.10). Press Enter to skip (Serial Based LIDAR): "
             read hokuyoip
             echo "export LIDARIP=$hokuyoip" >> $HOME/.bashrc
 
