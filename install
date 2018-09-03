@@ -79,7 +79,7 @@ sudo apt-get update
 sudo apt-get install -y avahi-daemon openssh-server python-setuptools python-dev build-essential python-gudev
 
 sudo easy_install pip
-sudo pip install -U platformio
+sudo python2.7 -m pip install -U platformio
 sudo rm -rf $HOME/.platformio/
 
 source /opt/ros/$ROSDISTRO/setup.bash
