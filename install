@@ -115,7 +115,7 @@ if [[ "$3" == "test" ]]
         sudo apt-get install -y \
         ros-$ROSDISTRO-xv-11-laser-driver \
         ros-$ROSDISTRO-rplidar-ros \
-        ros-$ROSDISTRO-urg-node \        
+        ros-$ROSDISTRO-urg-node \
         ros-$ROSDISTRO-freenect-launch \
         ros-$ROSDISTRO-realsense-camera \
         ros-$ROSDISTRO-depthimage-to-laserscan \
@@ -142,12 +142,10 @@ else
         then
             sudo apt-get install -y ros-$ROSDISTRO-urg-node
             hokuyoip=
-            while [ -z $hokuyoip ]
-            do
-                echo -n 'Input your hokuyo IP (Default 192.168.0.10): '
-                read hokuyoip
-                echo "export LIDARIP=$hokuyoip" >> $HOME/.bashrc
-            done
+            echo ""
+            echo -n "Input your hokuyo IP (Default 192.168.0.10): "
+            read hokuyoip
+            echo "export LIDARIP=$hokuyoip" >> $HOME/.bashrc
 
     elif [[ "$SENSOR" == "kinect" ]]
         then
@@ -175,10 +173,6 @@ git clone https://github.com/linorobot/lino_udev.git
 cd $HOME/linorobot_ws/src/linorobot
 TRAVIS_BRANCH="echo $TRAVIS_BRANCH"
 if [ "$TRAVIS_BRANCH" = "devel" ]; then git checkout devel; fi
-
-rm -rf $HOME/linorobot_ws/src/linorobot/teensy/firmware/lib/ros_lib/lino_msgs
-rosrun rosserial_arduino make_libraries.py /tmp
-cp -r /tmp/ros_lib/lino_msgs/ $HOME/linorobot_ws/src/linorobot/teensy/firmware/lib/ros_lib/
 
 cd $HOME/linorobot_ws/src/linorobot/teensy/firmware
 export PLATFORMIO_CI_SRC=$PWD/src/firmware.ino
