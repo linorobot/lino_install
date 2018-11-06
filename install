@@ -108,7 +108,9 @@ ros-$ROSDISTRO-imu-filter-madgwick \
 ros-$ROSDISTRO-gmapping \
 ros-$ROSDISTRO-map-server \
 ros-$ROSDISTRO-navigation \
-ros-$ROSDISTRO-robot-localization
+ros-$ROSDISTRO-robot-localization \
+ros-$ROSDISTRO-tf2 \
+ros-$ROSDISTRO-tf2-ros 
 
 if [[ "$3" == "test" ]]
     then
