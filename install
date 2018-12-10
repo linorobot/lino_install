@@ -2,11 +2,10 @@
 
 set -e
 
-source /opt/ros/kinetic/setup.bash
+source /opt/ros/$(dir /opt/ros)/setup.bash
 
 sudo cp files/49-teensy.rules /etc/udev/rules.d/
-
-ROSDISTRO="$(rosversion -d)"
+ROSDISTRO="$($ROSVERSIONPATH -d)"
 BASE=$1
 SENSOR=$2
 ARCH="$(uname -m)"
