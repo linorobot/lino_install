@@ -2,6 +2,8 @@
 
 set -e
 
+source /opt/ros/kinetic/setup.bash
+
 sudo cp files/49-teensy.rules /etc/udev/rules.d/
 
 ROSDISTRO="$(rosversion -d)"
