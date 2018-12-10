@@ -5,7 +5,8 @@ set -e
 source /opt/ros/$(dir /opt/ros)/setup.bash
 
 sudo cp files/49-teensy.rules /etc/udev/rules.d/
-ROSDISTRO="$($ROSVERSIONPATH -d)"
+
+ROSDISTRO="$(rosversion -d)"
 BASE=$1
 SENSOR=$2
 ARCH="$(uname -m)"
