@@ -84,8 +84,8 @@ avahi-daemon \
 openssh-server \
 python-setuptools \
 python-dev \
-build-essential \
-python-gudev
+build-essential
+# python-gudev
 
 sudo easy_install pip
 sudo python2.7 -m pip install -U platformio
@@ -108,7 +108,8 @@ ros-$ROSDISTRO-roslint \
 ros-$ROSDISTRO-rosserial \
 ros-$ROSDISTRO-rosserial-arduino \
 ros-$ROSDISTRO-imu-filter-madgwick \
-ros-$ROSDISTRO-gmapping \
+# ros-$ROSDISTRO-gmapping \
+ros-$ROSDISTRO-cartographer \
 ros-$ROSDISTRO-map-server \
 ros-$ROSDISTRO-navigation \
 ros-$ROSDISTRO-robot-localization \
