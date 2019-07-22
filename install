@@ -87,7 +87,7 @@ python-dev \
 build-essential
 # python-gudev
 
-sudo easy_install pip
+sudo apt-get install python-pip
 sudo python2.7 -m pip install -U platformio
 sudo rm -rf $HOME/.platformio/
 
@@ -109,7 +109,6 @@ ros-$ROSDISTRO-rosserial \
 ros-$ROSDISTRO-rosserial-arduino \
 ros-$ROSDISTRO-imu-filter-madgwick \
 # ros-$ROSDISTRO-gmapping \
-ros-$ROSDISTRO-cartographer \
 ros-$ROSDISTRO-map-server \
 ros-$ROSDISTRO-navigation \
 ros-$ROSDISTRO-robot-localization \
@@ -183,6 +182,7 @@ git clone https://github.com/linorobot/linorobot.git
 git clone https://github.com/linorobot/imu_calib.git
 git clone https://github.com/linorobot/lino_pid.git
 git clone https://github.com/linorobot/lino_udev.git
+git clone https://github.com/ros-perception/slam_gmapping
 
 cd $HOME/linorobot_ws/src/linorobot
 TRAVIS_BRANCH="echo $TRAVIS_BRANCH"
