@@ -97,7 +97,12 @@ cd $HOME
 mkdir -p linorobot_ws/src
 cd $HOME/linorobot_ws/src
 catkin_init_workspace
+
 git clone https://github.com/linorobot/lino_msgs.git
+git clone https://github.com/ros-perception/openslam_gmapping
+git clone https://github.com/ros/geometry.git
+cd $HOME/linorobot_ws/
+rosdep install --from-paths src/ -i
 
 cd $HOME/linorobot_ws/
 catkin_make
