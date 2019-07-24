@@ -93,16 +93,21 @@ sudo rm -rf $HOME/.platformio/
 
 source /opt/ros/$ROSDISTRO/setup.bash
 
+
+
 cd $HOME
 mkdir -p linorobot_ws/src
 cd $HOME/linorobot_ws/src
 catkin_init_workspace
 
-git clone https://github.com/linorobot/lino_msgs.git
-git clone https://github.com/ros-perception/openslam_gmapping
-git clone https://github.com/ros/geometry.git
-cd $HOME/linorobot_ws/
-rosdep install --from-paths src/ -i
+if [ $ROSDISTRO == "bionic" ]
+    then
+        git clone https://github.com/ros-perception/openslam_gmapping
+        git clone https://github.com/ros/geometry.git
+        cd $HOME/linorobot_ws/
+        rosdep install --from-paths src/ -i
+else
+    sudo apt-get -y install ros-$ROSDISTRO-gmapping 
 
 cd $HOME/linorobot_ws/
 catkin_make
@@ -113,7 +118,6 @@ ros-$ROSDISTRO-roslint \
 ros-$ROSDISTRO-rosserial \
 ros-$ROSDISTRO-rosserial-arduino \
 ros-$ROSDISTRO-imu-filter-madgwick \
-# ros-$ROSDISTRO-gmapping \
 ros-$ROSDISTRO-map-server \
 ros-$ROSDISTRO-navigation \
 ros-$ROSDISTRO-robot-localization \
@@ -187,7 +191,7 @@ git clone https://github.com/linorobot/linorobot.git
 git clone https://github.com/linorobot/imu_calib.git
 git clone https://github.com/linorobot/lino_pid.git
 git clone https://github.com/linorobot/lino_udev.git
-git clone https://github.com/ros-perception/slam_gmapping
+git clone https://github.com/linorobot/lino_msgs.git
 
 cd $HOME/linorobot_ws/src/linorobot
 TRAVIS_BRANCH="echo $TRAVIS_BRANCH"
@@ -203,6 +207,7 @@ echo "export LINOBASE=$BASE" >> $HOME/.bashrc
 source $HOME/.bashrc
 
 cd $HOME/linorobot_ws
+catkin_make --pkg lino_msgs
 catkin_make
 
 echo
