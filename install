@@ -107,7 +107,9 @@ if [ $ROSDISTRO == "bionic" ]
         cd $HOME/linorobot_ws/
         rosdep install --from-paths src/ -i
 else
-    sudo apt-get -y install ros-$ROSDISTRO-gmapping 
+    sudo apt-get install -y \
+    ros-$ROSDISTRO-gmapping \
+    ros-$ROSDISTRO-map-server
 
 cd $HOME/linorobot_ws/
 catkin_make
@@ -118,7 +120,6 @@ ros-$ROSDISTRO-roslint \
 ros-$ROSDISTRO-rosserial \
 ros-$ROSDISTRO-rosserial-arduino \
 ros-$ROSDISTRO-imu-filter-madgwick \
-ros-$ROSDISTRO-map-server \
 ros-$ROSDISTRO-navigation \
 ros-$ROSDISTRO-robot-localization \
 ros-$ROSDISTRO-tf2 \
