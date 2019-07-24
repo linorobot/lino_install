@@ -2,6 +2,11 @@ sudo: required
 dist: xenial
 language: generic
 
+branches:
+  only:
+    - master
+    - melodic
+
 compiler:
   - gcc
 
