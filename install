@@ -185,9 +185,8 @@ else
     fi
 fi
 
-source /opt/ros/$ROSDISTRO/setup.bash
 cd $HOME/linorobot_ws/
-rosdep install --from-paths src/ -i
+catkin_make
 
 cd $HOME/linorobot_ws/src
 git clone https://github.com/linorobot/linorobot.git
