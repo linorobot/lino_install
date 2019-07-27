@@ -129,21 +129,21 @@ if [[ "$3" == "test" ]]
         ros-$ROSDISTRO-rplidar-ros \
         ros-$ROSDISTRO-urg-node \
         ros-$ROSDISTRO-depthimage-to-laserscan \
-        ros-$ROSDISTRO-teb-local-planner \
-        ros-$ROSDISTRO-camera-info-manager \
-        libusb-dev
-        cd $HOME
-        git clone https://github.com/OpenKinect/libfreenect.git    
-        cd libfreenect    
-        mkdir build   
-        cd build    
-        cmake -L ..    
-        make
-        sudo make install
+        ros-$ROSDISTRO-teb-local-planner 
+#         ros-$ROSDISTRO-camera-info-manager \
+#         libusb-dev
+#         cd $HOME
+#         git clone https://github.com/OpenKinect/libfreenect.git    
+#         cd libfreenect    
+#         mkdir build   
+#         cd build    
+#         cmake -L ..    
+#         make
+#         sudo make install
         
         cd $HOME/linorobot_ws/src
         git clone https://github.com/EAIBOT/ydlidar.git
-        git clone https://github.com/ros-drivers/freenect_stack.git
+#         git clone https://github.com/ros-drivers/freenect_stack.git
         git clone https://github.com/clearpathrobotics/lms1xx.git
 else
     if [[ "$SENSOR" == "hokuyo" ]]
@@ -161,8 +161,7 @@ else
             git clone https://github.com/ros-drivers/freenect_stack.git
             sudo apt-get install -y \
             ros-$ROSDISTRO-depthimage-to-laserscan \
-            ros-$ROSDISTRO-camera-info-manager
-            
+            ros-$ROSDISTRO-camera-info-manager     
             git clone https://github.com/OpenKinect/libfreenect.git    
             cd libfreenect    
             mkdir build   
