@@ -99,7 +99,6 @@ catkin_init_workspace
 
 if [ $ROSDISTRO == "melodic" ]
     then
-        sudo apt-get install -y ros-$ROSDISTRO-camera-info-manager
         git clone https://github.com/ros-perception/openslam_gmapping.git
         
 else
@@ -131,7 +130,9 @@ if [[ "$3" == "test" ]]
         ros-$ROSDISTRO-urg-node \
         ros-$ROSDISTRO-depthimage-to-laserscan \
         ros-$ROSDISTRO-teb-local-planner 
-
+        ros-$ROSDISTRO-camera-info-manager \
+        libfreenect-dev   
+        
         cd $HOME/linorobot_ws/src
         git clone https://github.com/EAIBOT/ydlidar.git
         git clone https://github.com/ros-drivers/freenect_stack.git
@@ -150,7 +151,10 @@ else
         then
             cd $HOME/linorobot_ws/src
             git clone https://github.com/ros-drivers/freenect_stack.git
-            sudo apt-get install -y ros-$ROSDISTRO-depthimage-to-laserscan
+            sudo apt-get install -y \
+            ros-$ROSDISTRO-depthimage-to-laserscan \
+            ros-$ROSDISTRO-camera-info-manager \
+            libfreenect-dev   
             
     elif [[ "$SENSOR" == "lms1xx" ]]
         then
