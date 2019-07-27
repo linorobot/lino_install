@@ -189,7 +189,7 @@ else
     fi
 fi
 
-rospack profile
+source /opt/ros/$ROSDISTRO/setup.bash
 cd $HOME/linorobot_ws/
 rosdep install --from-paths src/ -i
 
