@@ -228,7 +228,6 @@ echo "export LINOBASE=$BASE" >> $HOME/.bashrc
 source $HOME/.bashrc
 
 cd $HOME/linorobot_ws
-catkin_make --pkg lino_msgs
 catkin_make
 
 echo
