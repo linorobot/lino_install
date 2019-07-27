@@ -85,15 +85,12 @@ openssh-server \
 python-setuptools \
 python-dev \
 build-essential
-# python-gudev
 
 sudo apt-get install python-pip
 sudo python2.7 -m pip install -U platformio
 sudo rm -rf $HOME/.platformio/
 
 source /opt/ros/$ROSDISTRO/setup.bash
-
-
 
 cd $HOME
 mkdir -p linorobot_ws/src
@@ -108,8 +105,10 @@ if [ $ROSDISTRO == "bionic" ]
         rosdep install --from-paths src/ -i
 else
     sudo apt-get install -y \
+    python-gudev \
     ros-$ROSDISTRO-gmapping \
     ros-$ROSDISTRO-map-server
+fi
 
 cd $HOME/linorobot_ws/
 catkin_make
