@@ -99,12 +99,8 @@ catkin_init_workspace
 
 if [ $ROSDISTRO == "melodic" ]
     then
-        sudo apt-get install -y \
-        ros-$ROSDISTRO-angles \
-        ros-$ROSDISTRO-orocos-kdl 
         git clone https://github.com/ros-perception/openslam_gmapping.git
-        git clone https://github.com/ros/geometry.git
-
+        
 else
     sudo apt-get install -y \
     python-gudev \
