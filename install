@@ -130,12 +130,12 @@ if [[ "$3" == "test" ]]
         ros-$ROSDISTRO-urg-node \
         ros-$ROSDISTRO-depthimage-to-laserscan \
         ros-$ROSDISTRO-teb-local-planner \
-        ros-$ROSDISTRO-camera-info-manager \
-        libfreenect-dev   
+        ros-$ROSDISTRO-camera-info-manager
+        #libfreenect-dev   
         
         cd $HOME/linorobot_ws/src
         git clone https://github.com/EAIBOT/ydlidar.git
-        git clone https://github.com/ros-drivers/freenect_stack.git
+        #git clone https://github.com/ros-drivers/freenect_stack.git
         git clone https://github.com/clearpathrobotics/lms1xx.git
 else
     if [[ "$SENSOR" == "hokuyo" ]]
