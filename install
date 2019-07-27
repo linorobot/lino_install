@@ -99,6 +99,7 @@ catkin_init_workspace
 
 if [ $ROSDISTRO == "melodic" ]
     then
+        sudo apt-get install -y ros-$ROSDISTRO-camera-info-manager
         git clone https://github.com/ros-perception/openslam_gmapping.git
         
 else
