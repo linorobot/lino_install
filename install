@@ -84,7 +84,6 @@ avahi-daemon \
 openssh-server \
 python-setuptools \
 python-dev \
-#python-gudev \
 build-essential
 
 sudo apt-get install python-pip
@@ -120,8 +119,6 @@ ros-$ROSDISTRO-roslint \
 ros-$ROSDISTRO-rosserial \
 ros-$ROSDISTRO-rosserial-arduino \
 ros-$ROSDISTRO-imu-filter-madgwick \
-#ros-$ROSDISTRO-gmapping \
-#ros-$ROSDISTRO-map-server \
 ros-$ROSDISTRO-navigation \
 ros-$ROSDISTRO-robot-localization \
 ros-$ROSDISTRO-tf2 \
@@ -133,8 +130,6 @@ if [[ "$3" == "test" ]]
         ros-$ROSDISTRO-xv-11-laser-driver \
         ros-$ROSDISTRO-rplidar-ros \
         ros-$ROSDISTRO-urg-node \
-        #ros-$ROSDISTRO-lms1xx \
-        #ros-$ROSDISTRO-freenect-launch \
         ros-$ROSDISTRO-depthimage-to-laserscan \
         ros-$ROSDISTRO-teb-local-planner 
 
