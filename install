@@ -101,8 +101,7 @@ if [ $ROSDISTRO == "melodic" ]
     then
         git clone https://github.com/ros-perception/openslam_gmapping.git
         git clone https://github.com/ros/geometry.git
-        cd $HOME/linorobot_ws/
-        rosdep install --from-paths src/ -i
+
 else
     sudo apt-get install -y \
     python-gudev \
@@ -186,6 +185,9 @@ else
             sudo apt-get install -y ros-$ROSDISTRO-teb-local-planner
     fi
 fi
+
+cd $HOME/linorobot_ws/
+rosdep install --from-paths src/ -i
 
 cd $HOME/linorobot_ws/src
 git clone https://github.com/linorobot/linorobot.git
