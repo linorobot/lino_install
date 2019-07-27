@@ -28,6 +28,7 @@ install:
 script: 
   - cd
   - git clone https://github.com/linorobot/lino_install
+  - git checkout melodic
   - cd lino_install
   - ./install 2wd xv11 test
 
