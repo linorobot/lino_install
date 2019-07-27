@@ -130,7 +130,8 @@ if [[ "$3" == "test" ]]
         ros-$ROSDISTRO-urg-node \
         ros-$ROSDISTRO-depthimage-to-laserscan \
         ros-$ROSDISTRO-teb-local-planner \
-        ros-$ROSDISTRO-camera-info-manager
+        ros-$ROSDISTRO-camera-info-manager \
+        libusb-dev
         cd $HOME
         git clone https://github.com/OpenKinect/libfreenect.git    
         cd libfreenect    
