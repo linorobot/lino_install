@@ -97,7 +97,7 @@ mkdir -p linorobot_ws/src
 cd $HOME/linorobot_ws/src
 catkin_init_workspace
 
-if [ $ROSDISTRO == "bionic" ]
+if [ $ROSDISTRO == "melodic" ]
     then
         git clone https://github.com/ros-perception/openslam_gmapping
         git clone https://github.com/ros/geometry.git
