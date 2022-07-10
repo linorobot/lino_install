@@ -4,7 +4,8 @@ set -e
 
 source /opt/ros/$(dir /opt/ros)/setup.bash
 
-sudo cp files/49-teensy.rules /etc/udev/rules.d/
+wget https://www.pjrc.com/teensy/00-teensy.rules
+sudo cp 00-teensy.rules /etc/udev/rules.d/
 
 ROSDISTRO="$(rosversion -d)"
 BASE=$1
